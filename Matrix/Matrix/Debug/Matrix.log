@@ -1,0 +1,3 @@
+﻿  Source.cpp
+D:\Programming\CPP\Matrix\Matrix\Source.cpp(65,20): warning C4018: '<': signed/unsigned mismatch
+  Matrix.vcxproj -> D:\Programming\CPP\Matrix\Debug\Matrix.exe
