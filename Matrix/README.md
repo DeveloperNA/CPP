@@ -7,5 +7,5 @@ I have overloaded the arithmetic operators and also the insertion operator for e
 
 Here's a sample output of the usage of Matrix class:
 <img src= "output/output1.png">
-<img src = "/output/output2.png">
+<img src = "output/output2.png">
 
