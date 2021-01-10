@@ -6,6 +6,7 @@ A simple <b>Matrix</b> class design that represents mathematical matrix. It prov
 I have overloaded the arithmetic operators and also the insertion operator for easy access of functions.
 
 Here's a sample output of the usage of Matrix class:
+<br>
 <img src= "output/output1.png">
 <img src = "output/output2.png">
 
