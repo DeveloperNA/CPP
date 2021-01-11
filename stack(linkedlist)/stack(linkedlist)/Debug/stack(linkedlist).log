@@ -1,0 +1,4 @@
+﻿  Source.cpp
+D:\Programming\CPP\stack(linkedlist)\stack(linkedlist)\Source.cpp(83): warning C4715: 'stack::peek': not all control paths return a value
+D:\Programming\CPP\stack(linkedlist)\stack(linkedlist)\Source.cpp(61): warning C4715: 'stack::pop': not all control paths return a value
+  stack(linkedlist).vcxproj -> D:\Programming\CPP\stack(linkedlist)\Debug\stack(linkedlist).exe
