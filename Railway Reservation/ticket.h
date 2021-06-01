@@ -126,7 +126,7 @@ int* Ticket::getAvailable(string field, string value)
 
 Passenger** Ticket::getPassengersListByPNR(int pnr)
 {
-    cout << " ticket list" << endl;
+    // cout << " ticket list" << endl;
     Passenger **list = new Passenger*[64];
     int k=0;
     for(int i=0; i<64; i++){
@@ -168,14 +168,14 @@ int* Ticket::getEmpty()
 
 void Ticket::viewTickets()
 {
-
+    cout << "LB" << "\t" << "LB" << "\t" << "MB" << "\t" << "MB" <<"\t" << "UB" << "\t" << "UB" << "\t" << "SUB" << endl;
      for(int i=0; i<9; i++){
         for(int j=0; j<7; j++){
-            cout << i << j;      
+            // cout << i << j;      
             if(this->tkts[i][j] ==nullptr)
                 cout << "F" << "\t";
             else {
-                cout << this->tkts[i][j]->name << "\t";
+                cout << this->tkts[i][j]->id << "\t";
             }
         }
         cout << endl;
@@ -183,18 +183,5 @@ void Ticket::viewTickets()
 
 }
 
-void Ticket::viewAllEmpty()
-{
-    for(int i=0; i<9; i++){
-        for(int j=0; j<7; j++){
-            if(this->tkts[i][j] == nullptr){
-                cout << i << j << "\t";
-            }
-            else
-                cout << "*\t";
-        }
-        cout << endl;
-    }
-    
-}
+
 #endif 

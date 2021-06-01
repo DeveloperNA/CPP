@@ -36,17 +36,18 @@ int main()
     int age, choice;
     char gender, berthPreference;
 
-    // string c = "!AA";
-    // passengersList = new Passenger*[95];
+    string c = "!AA";
+    passengersList = new Passenger*[95];
+    id = 91;
 
-    // for(int i=0; i<95; i++){
-    //     passengersList[i] = new Passenger(i, c, 19, 'M', 'U', "");
-    //     cout << i;
-    //     c[0]++;
-    // }
-    // irctc.bookTickets(passengersList, cheranExpress, 95, pnr);
-
-    // free(passengersList);
+    for(int i=0; i<95; i++){
+        passengersList[i] = new Passenger(i, c, 19, 'M', 'U', "");
+        // cout << i;
+        c[0]++;
+    }
+    irctc.bookTickets(passengersList, cheranExpress, 95, pnr);
+    pnr = 1001;
+    free(passengersList);
 
     cout << "\n\t\t Welcome to Irctc\n\n";
 
@@ -81,9 +82,9 @@ int main()
                     id++;
                 }
 
-                irctc.bookTickets(passengersList, cheranExpress, n, pnr);
+                if(irctc.bookTickets(passengersList, cheranExpress, n, pnr))
+                    irctc.printList(passengersList);
                 pnr++;
-                irctc.printList(passengersList);
                 break;
             }
 
@@ -127,7 +128,7 @@ int main()
                 break;
             }
             case 5: exit(0);
-            break;
+            break; 
         }
        
     }

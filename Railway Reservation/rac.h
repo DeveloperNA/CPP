@@ -73,16 +73,22 @@ void RAC::viewRac()
 {
     cout << "\n\nviewRAC\n\n";
     RACList *n = this->head;
-    for(int i=0; i<this->count; i++){
-        cout << n->passenger->name << "\t";
-        n = n->next;
+    
+    for(int i=0; i<18; i++){
+        if(i < this->count){
+            cout << n->passenger->id << "\t";
+            n = n->next;
+        }
+        else{
+            cout << "F ";
+        }
     }
     cout << endl;
 }
 
 Passenger** RAC::getPassengersListByPNR(int pnr)
 {
-    cout << "rac list" << endl;
+    // cout << "rac list" << endl;
     if(this->head == NULL){
         return nullptr;
     }
@@ -106,7 +112,7 @@ Passenger** RAC::getPassengersListByPNR(int pnr)
 
 bool RAC::remove(string field, string value)
 {
-    cout << endl << "value :" <<  value << endl;
+    // cout << endl << "value :" <<  value << endl;
     int id = stoi(value);
     RACList *temp, *d, *prv = NULL;
 

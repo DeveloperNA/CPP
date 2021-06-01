@@ -59,21 +59,21 @@ void Train::showAvailableTickets()
 
 void Train::allotTicket(Passenger *passenger, int* ind, int pnr)
 {
-    cout << endl <<  "ticket allocation" << endl;
+    // cout << endl <<  "ticket allocation" << endl;
     passenger->PNR = pnr;
     this->tickets->insert(passenger, ind);
 }
 
 void Train::allotRac(Passenger *passenger, int pnr)
 {
-    cout << endl << "RAC Ticket" << endl;
+    // cout << endl << "RAC Ticket" << endl;
     passenger->PNR = pnr;
     this->Rac->insertToRacList(passenger);
 }
 
 void Train::allotWaiting(Passenger *passenger, int pnr)
 {
-    cout << endl << "Waiting Ticket" << endl;
+    // cout << endl << "Waiting Ticket" << endl;
     passenger->PNR = pnr;
     this->waitingTickets->insertToWaitingList(passenger);
 }

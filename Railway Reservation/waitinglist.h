@@ -91,7 +91,7 @@ Passenger **WaitingTickets::getPassengersListByPNR(int pnr)
 }
 bool WaitingTickets::remove(string field, string value)
 {
-    cout << endl << "value :" <<  value << endl;
+    // cout << endl << "value :" <<  value << endl;
     int id = stoi(value);
     WaitingList *temp, *d, *prv = NULL;
 
@@ -124,12 +124,19 @@ bool WaitingTickets::remove(string field, string value)
 void WaitingTickets::viewWaitingList()
 {
     struct WaitingList *n = this->head;
-    cout << endl << "Waiting list :" << endl;
-    for(int i=0; i<this->count; i++){
-        cout << n->passenger->name << "\t";
-        n= n->next;
+    cout << endl << "Waiting list :" << endl << endl;
+
+ 
+    for(int i=0; i<10; i++){
+        if(i < this->count){
+            cout << n->passenger->id << "\t";
+            n= n->next;
+        }
+        else{
+            cout << "F ";
+        }
     }
-    cout << "\n";
+    cout << "\n\n";
 }
 
 #endif

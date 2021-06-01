@@ -17,7 +17,7 @@ class IRCTC{
         TrainList *head;
     public:
         void addTrain(Train *obj); 
-        void bookTickets(Passenger **passengers, Train *train, int count, int pnr);
+        bool bookTickets(Passenger **passengers, Train *train, int count, int pnr);
         void cancelTicket(Train *train, int id);
         void printList(Passenger **list);
         void showAvailableTickets(Train *train);
@@ -25,8 +25,9 @@ class IRCTC{
         Passenger** filterTickets(Train *train, int pnr);
 };
 
-void IRCTC::bookTickets(Passenger **passengers, Train *train, int count, int pnr)
+bool IRCTC::bookTickets(Passenger **passengers, Train *train, int count, int pnr)
 {
+    int failed = 0;
     for(int i=0; i<count; i++){
         string berth;
         berth += passengers[i]->berthPreference;
@@ -55,10 +56,12 @@ void IRCTC::bookTickets(Passenger **passengers, Train *train, int count, int pnr
                 }
                 else{
                     cout << "Unable to book ticket for passenger : " << passengers[i]->name << endl;
+                    failed++;
                 }
             }
         }
     }
+    return failed == count? false: true;
 }
 
 Passenger** IRCTC::filterTickets(Train *train, int pnr)
@@ -100,8 +103,9 @@ Passenger** IRCTC::filterTickets(Train *train, int pnr)
 
 void IRCTC::printList(Passenger **list)
 {
+    cout << endl << "TicketId" << "\t" << "PassengerName" << "\t" << "BerthPreference" << "\t" << "PNR" << endl;
     for(int i=0; list[i]!= nullptr; i++){
-        cout << endl << list[i]->id << "\t" << list[i]->name << "\t" << list[i]->berthPreference  << "\t" << list[i]->PNR << endl;
+        cout << endl << list[i]->id << "\t\t" << list[i]->name << "\t\t" << list[i]->berthPreference  << "\t\t" << list[i]->PNR << endl;
     }
 }
 
@@ -149,14 +153,28 @@ void IRCTC::cancelTicket(Train *train,int id)
 
 void IRCTC::showAvailableTickets(Train *train)
 {
-    train->tickets->viewAllEmpty();
-    cout << endl << "Total Number of Tickets Unoccupied are : " << 63 - train->tickets->count << endl << endl;
+    train->tickets->viewTickets();
+    train->Rac->viewRac();
+    train->waitingTickets->viewWaitingList();
 }
 
 void IRCTC::showBookedTickets(Train *train)
 {
-    train->tickets->viewTickets();
-    cout << endl << "Total Number of Tickets Occupied are: " << train->tickets->count << endl;
+    int pnr;
+    Passenger **list;
+    cout << endl << "Provide the PNR to view tickets info..." << endl;
+    cin >> pnr;
+    list = this->filterTickets(train, pnr);
+    
+    if(list[0] != NULL){
+        cout  << endl << "TicketId" << "\t" << "PassengerName" << "\t" << "Age" << "\t" << "Gender"  << "\t" <<"BerthPreference" << endl;
+        for(int i=0; list[i] != NULL; i++){
+            cout << list[i]->id << "\t\t" << list[i]->name << "\t\t" << list[i]->age << "\t" << list[i]->gender << "\t" << list[i]->berthPreference << endl; 
+        }
+    }
+    else{
+        cout << "PNR not found" << endl;
+    }
 }
 
 #endif
